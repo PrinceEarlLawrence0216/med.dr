@@ -1,0 +1,85 @@
+<html>
+<head>
+    <title>Test</title>
+    
+</head>
+<style>
+    body {
+        background-color: #f0f0f0;
+    }
+    .input-group-lg .form-control {
+    border-radius: 0.3rem;
+    padding: 1rem;
+    font-size: 1.25rem;
+}
+
+.input-group-lg .input-group-text {
+    border-radius: 0.3rem 0 0 0.3rem;
+    padding: 1rem;
+    font-size: 1.25rem;
+}
+
+.datalist-options {
+    display: none;
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 0.3rem;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+.datalist-options option {
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+.datalist-options option:hover {
+    background-color: #f1f1f1;
+}
+</style>
+<body>
+
+    <div class="col-lg-8 col-12 mx-auto">
+        <h1 class="text-white text-center">Hello! What can we help?</h1>
+    
+        <h6 class="text-center">find the medicines for your health</h6>
+    
+        <form method="get" class="custom-form mt-4 pt-2 mb-lg-0 mb-5" role="search">
+            <div class="input-group input-group-lg">
+                <span class="input-group-text bi-search" id="basic-addon1"></span>
+    
+                <input name="keyword" type="search" class="form-control" id="keyword" placeholder="Search here ..." aria-label="Search" list="search-options">
+                <datalist id="search-options">
+                    <option value="Aspirin">
+                    <option value="Ibuprofen">
+                    <option value="Paracetamol">
+                    <option value="Antibiotics">
+                    <option value="Antidepressants">
+                </datalist>
+                <button type="submit" class="form-control">Search</button>
+            </div>
+        </form>
+    </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('keyword');
+    const datalist = document.getElementById('search-options');
+
+    searchInput.addEventListener('input', function() {
+        const value = searchInput.value.toLowerCase();
+        const options = datalist.querySelectorAll('option');
+        
+        options.forEach(option => {
+            if (option.value.toLowerCase().includes(value)) {
+                option.style.display = 'block';
+            } else {
+                option.style.display = 'none';
+            }
+        });
+    });
+});
+</script>
+</body>
+</html>
